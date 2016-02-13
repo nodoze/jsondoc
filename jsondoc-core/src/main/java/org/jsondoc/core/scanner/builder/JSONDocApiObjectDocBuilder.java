@@ -18,7 +18,8 @@ public class JSONDocApiObjectDocBuilder {
 
 		Set<ApiObjectFieldDoc> fieldDocs = new TreeSet<ApiObjectFieldDoc>();
 		for (Field field : clazz.getDeclaredFields()) {
-			if (field.getAnnotation(ApiObjectField.class) != null) {
+			if (field.getAnnotation(ApiObjectField.class) != null && 
+					field.getAnnotation(ApiIgnore.class) == null) {
 				ApiObjectFieldDoc fieldDoc = JSONDocApiObjectFieldDocBuilder.build(field.getAnnotation(ApiObjectField.class), field);
 				fieldDoc.setSupportedversions(JSONDocApiVersionDocBuilder.build(field));
 				fieldDocs.add(fieldDoc);

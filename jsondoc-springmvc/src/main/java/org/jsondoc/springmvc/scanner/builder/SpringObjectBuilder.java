@@ -21,6 +21,7 @@ public class SpringObjectBuilder {
 		Set<ApiObjectFieldDoc> fieldDocs = new TreeSet<ApiObjectFieldDoc>();
 		
 		for (Field field : clazz.getDeclaredFields()) {
+			if(field.getAnnotation(ApiIgnore.class) != null) continue;
 			ApiObjectFieldDoc fieldDoc = new ApiObjectFieldDoc();
 			fieldDoc.setName(field.getName());
 			fieldDoc.setOrder(Integer.MAX_VALUE);
