@@ -5,6 +5,7 @@ import java.lang.reflect.Modifier;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.jsondoc.core.annotation.ApiIgnoreField;
 import org.jsondoc.core.pojo.ApiObjectDoc;
 import org.jsondoc.core.pojo.ApiObjectFieldDoc;
 import org.jsondoc.core.scanner.DefaultJSONDocScanner;
@@ -21,7 +22,7 @@ public class SpringObjectBuilder {
 		Set<ApiObjectFieldDoc> fieldDocs = new TreeSet<ApiObjectFieldDoc>();
 		
 		for (Field field : clazz.getDeclaredFields()) {
-			if(field.getAnnotation(ApiIgnore.class) != null) continue;
+			if(field.getAnnotation(ApiIgnoreField.class) != null) continue;
 			ApiObjectFieldDoc fieldDoc = new ApiObjectFieldDoc();
 			fieldDoc.setName(field.getName());
 			fieldDoc.setOrder(Integer.MAX_VALUE);

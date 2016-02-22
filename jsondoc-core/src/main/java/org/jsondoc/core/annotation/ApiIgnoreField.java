@@ -7,14 +7,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * This annotation is to be used on fields and API methods. class to ignore pojo field and controller methods respectively. 
+ * This annotation is to be used on fields to ignore pojo field. 
  * @author nodoze
  *
  */
 
 @Documented
-@Target(value = { ElementType.TYPE, ElementType.METHOD })
+@Target(value = ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ApiIgnore {
+public @interface ApiIgnoreField {
 
 }

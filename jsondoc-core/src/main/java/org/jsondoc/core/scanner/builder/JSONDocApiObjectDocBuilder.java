@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.jsondoc.core.annotation.ApiIgnoreField;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 import org.jsondoc.core.pojo.ApiObjectDoc;
@@ -19,7 +20,7 @@ public class JSONDocApiObjectDocBuilder {
 		Set<ApiObjectFieldDoc> fieldDocs = new TreeSet<ApiObjectFieldDoc>();
 		for (Field field : clazz.getDeclaredFields()) {
 			if (field.getAnnotation(ApiObjectField.class) != null && 
-					field.getAnnotation(ApiIgnore.class) == null) {
+					field.getAnnotation(ApiIgnoreField.class) == null) {
 				ApiObjectFieldDoc fieldDoc = JSONDocApiObjectFieldDocBuilder.build(field.getAnnotation(ApiObjectField.class), field);
 				fieldDoc.setSupportedversions(JSONDocApiVersionDocBuilder.build(field));
 				fieldDocs.add(fieldDoc);
